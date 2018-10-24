@@ -7,7 +7,9 @@ export default class Counter extends Component {
     static propTypes = {
         count: PropTypes.number.isRequired,
         increment:PropTypes.func.isRequired,
-        decrement:PropTypes.func.isRequired
+        decrement:PropTypes.func.isRequired,
+        incrementAsync:PropTypes.func.isRequired,
+
     }
 
     incrment = () =>{
@@ -34,19 +36,21 @@ export default class Counter extends Component {
 
     }
 
+
     asyncincrment = () => {
-        // 得到原来的number值
+        const val = this.selector.value * 1
+        this.props.incrementAsync(val)
 
-        setTimeout(() => {
-
-            const val = this.selector.value * 1
-
-            //更新值
-            // this.props.store.dispatch(actions.incrementAction(val))
-            // this.setState({number:number + val})
-            this.props.increment(val);
-
-        },1000);
+        // setTimeout(() => {
+        //
+        //     const val = this.selector.value * 1
+        //
+        //     //更新值
+        //     // this.props.store.dispatch(actions.incrementAction(val))
+        //     // this.setState({number:number + val})
+        //     this.props.increment(val);
+        //
+        // },1000);
 
 
     }
