@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import {DECRMENT, INCRMENT} from "../redux/reduce-types";
+import PropTypes from 'prop-types'
 
-export default class App extends Component {
 
+export default class Counter extends Component {
+
+    static propTypes = {
+        count: PropTypes.number.isRequired,
+        increment:PropTypes.func.isRequired,
+        decrement:PropTypes.func.isRequired
+    }
 
     incrment = () =>{
         // 得到原来的number值
@@ -10,9 +16,9 @@ export default class App extends Component {
 
         const val = this.selector.value * 1
         //更新值
-        this.props.store.dispatch({type:INCRMENT,data:val})
-
+        // this.props.store.dispatch(actions.incrementAction(val))
         // this.setState({number:number + val})
+        this.props.increment(val);
 
     }
 
@@ -22,8 +28,9 @@ export default class App extends Component {
         // const {number} = this.props.store
         const val = this.selector.value * 1
         //更新值
-        this.props.store.dispatch({type:DECRMENT,data:val})
+        // this.props.store.dispatch(actions.decrementAction(val))
         // this.setState({number:number - val})
+        this.props.decrement(val);
 
     }
 
@@ -35,8 +42,9 @@ export default class App extends Component {
             const val = this.selector.value * 1
 
             //更新值
-            this.props.store.dispatch({type:INCRMENT,data:val})
+            // this.props.store.dispatch(actions.incrementAction(val))
             // this.setState({number:number + val})
+            this.props.increment(val);
 
         },1000);
 
@@ -45,11 +53,13 @@ export default class App extends Component {
 
 
     render() {
-        const number = this.props.store.getState()
+        // const number = this.props.store.getState()
+        const {count} = this.props
+
 
         return (
             <div>
-                <p>number:{number}</p>
+                <p>number:{count}</p>
                 <div>
                     <select ref={x=>this.selector = x}>
                         <option value='1'>1</option>

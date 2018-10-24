@@ -7,7 +7,7 @@
  */
 import {INCREMENT, DECREMENT} from "./reduce-types";
 
-//计算器的 reducer（还原器）
+
 export function counter(store = 0,action) {
 
     console.log(store)

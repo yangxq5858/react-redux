@@ -1,26 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {createStore} from 'redux'
-
-import {counter} from "./redux/reducers";
-import App from './components/app'
+import {Provider} from 'react-redux'
 
 
-const store = createStore(counter)
+import App from './containers/app'
+import store from './redux/store'
 
 
-function render() {
-    ReactDOM.render(
-        (
-            <App store={store}/>
-        ),
-        document.getElementById('root'))
-}
+ReactDOM.render(
+    (
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    ),
+    document.getElementById('root'))
 
-// 初始化组件
-render()
-
-// 但有消息时，需要重新渲染
-store.subscribe(()=>{
-    render()
-})
