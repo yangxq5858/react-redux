@@ -1,23 +1,43 @@
-import {INCREMENT,DECREMENT} from "./reduce-types";
-/*
-包含所有action的 creator
+import {ADDCOMMENT,DELCOMMENT,INITCOMMENT} from "./action_types";
+
+/**
+ * 同步方法  增加评论
+ * @param comment 评论数据
+ * @returns {{type: string, data: *}}
  */
-export const incrementAction = (number)=>({type:INCREMENT,data:number})
-export const decrementAction = (number)=>({type:DECREMENT,data:number})
+export const addCommentFunc = (comment)=>({type:ADDCOMMENT,data:comment})
 
-// 异步action creator(返回一个函数)
 
-export const incrementAsync = (number) => {
+/**
+ * 同步方法 删除评论 按下标删除
+ * @param comment
+ * @returns {{type: (function(*=)), data: *}}
+ * @constructor
+ */
+export const delCommentFunc = (index)=>({type:DELCOMMENT,data:index})
 
-    return dispatch => {
 
-        setTimeout(() => {
+const initComment = (comments)=>({type:INITCOMMENT,data:comments})
 
-            dispatch(incrementAction(number))
+/**
+ * 异步方法
+ * @returns {Function}
+ */
+export const getComments = ()=> {
+    return dispatch=>{
+        // 模拟发送请求，获取数据
+        setTimeout(()=>{
 
-        }, 1000)
+            const comments = [
+                {username: "Tom", content: "React 挺好的"},
+                {username: "Jack", content: "React 好难！"}
+            ];
+
+            dispatch(initComment(comments));
+
+        },1000)
+
 
     }
 
 }
-

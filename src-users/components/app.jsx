@@ -6,11 +6,11 @@ import Main from './main'
 export default class App extends Component{
     state={
         searchName:''
-    }
+    };
 
     getSearchName = (searchName) =>{
         this.setState({searchName})
-    }
+    };
 
 
     render(){

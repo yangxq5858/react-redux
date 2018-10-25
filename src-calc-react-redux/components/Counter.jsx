@@ -12,7 +12,7 @@ export default class Counter extends Component {
 
     }
 
-    incrment = () =>{
+    increment = () =>{
         // 得到原来的number值
         // const {number} = this.props.store
 
@@ -25,7 +25,7 @@ export default class Counter extends Component {
     }
 
 
-    decrment = () =>{
+    decrement = () =>{
         // 得到原来的number值
         // const {number} = this.props.store
         const val = this.selector.value * 1
@@ -37,7 +37,7 @@ export default class Counter extends Component {
     }
 
 
-    asyncincrment = () => {
+    asyncIncrement = () => {
         const val = this.selector.value * 1
         this.props.incrementAsync(val)
 
@@ -71,9 +71,9 @@ export default class Counter extends Component {
                         <option value='3'>3</option>
                     </select>
                     &nbsp;
-                    <button onClick={this.incrment}>+</button>
-                    <button onClick={this.decrment}>-</button>
-                    <button onClick={this.asyncincrment}>async add</button>
+                    <button onClick={this.increment}>+</button>
+                    <button onClick={this.decrement}>-</button>
+                    <button onClick={this.asyncIncrement}>async add</button>
                 </div>
             </div>
         );

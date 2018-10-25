@@ -1,17 +1,18 @@
+/**
+ * 创建redux的  store对象
+ *
+ * redux 默认只能处理同步
+ */
+
 import {createStore,applyMiddleware} from 'redux'
-import {commentReducer} from "./reducers";
+import {counter} from "./reducers";
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
 // const store = createStore(counter)
 const store = createStore(
-    commentReducer,
+    counter,
     composeWithDevTools(applyMiddleware(thunk)) //实现异步和添加调试工具
 )
 
 export default store
-
-
-
-
-
