@@ -43,7 +43,7 @@ class App extends React.Component {
 
 // redux包装了state和方法
 export default connect(
-    state => ({comments:state}),
+    state => ({comments:state.commentReducer}),
     {
         addCommentFunc,delCommentFunc,getComments
     }

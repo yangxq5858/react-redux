@@ -15,8 +15,7 @@ import * as actions from './action_types'
  * @param action
  * @returns {*}
  */
-
-export function commentReducer(state = [], action) {
+function commentReducer(state = [], action) {
     switch (action.type) {
         case actions.ADDCOMMENT: {
             // debugger;
@@ -53,10 +52,12 @@ export function commentReducer(state = [], action) {
 
 }
 
+/**
+ * 将reducer打包 在一起
+ * @type {Reducer<any> | Reducer<any, AnyAction>}
+ */
+const MyReducer = combineReducers({
+    commentReducer
+})
 
-// const reducer = combineReducers({
-//     commentReducer
-//
-// })
-//
-// export default reducer
+export default MyReducer
